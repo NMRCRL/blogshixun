@@ -1,6 +1,6 @@
 package com.scs.web.blog.service;
 
-import com.scs.web.blog.domain.UserDto;
+import com.scs.web.blog.domain.dto.UserDto;
 import com.scs.web.blog.util.Result;
 
 /**
@@ -32,5 +32,4 @@ public interface UserService {
      * @return Result
      */
     Result checkMobile(String mobile);
-
 }
