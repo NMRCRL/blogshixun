@@ -27,7 +27,7 @@ import java.util.List;
  **/
 public class JSoupSpider {
     private static Logger logger = LoggerFactory.getLogger(JSoupSpider.class);
-
+    private static final int PAGE_COUNT = 1;
 
     public static List<User> getUsers() {
         Document document = null;
@@ -161,7 +161,7 @@ public class JSoupSpider {
                 topic.setCreateTime(DataUtil.getCreateTime());
                 topicList.add(topic);
             });
-        }
+            }
         return topicList;
     }
 
@@ -169,4 +169,4 @@ public class JSoupSpider {
     public static void main(String[] args) {
     }
 }
-}
+
