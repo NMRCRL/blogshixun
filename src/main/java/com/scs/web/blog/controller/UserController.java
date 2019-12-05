@@ -29,11 +29,30 @@ import java.util.logging.Logger;
  * @Version 1.0
  **/
 
-@WebServlet(urlPatterns = "/sign-in")
+@WebServlet(urlPatterns = {"/api/user", "/api/user/*"})
 public class UserController extends HttpServlet {
-    private static Logger logger= (Logger) LoggerFactory.getLogger(UserController.class);
-    private UserService userService= ServiceFactory.getUserServiceInstance();
+    private static Logger logger = (Logger) LoggerFactory.getLogger(UserController.class);
+    private UserService userService = ServiceFactory.getUserServiceInstance();
 
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String uri = req.getRequestURI().trim();
+        if (UrlPatten.USER.equals(uri)) {
+            String page = req.getParameter("page");
+            String keywords = req.getParameter("keywords");
+            String count = req.getParameter("count");
+            if (page != null) {
+                HttpUtil.getResponseBody(resp, userService.selectByPage(Integer.parseInt(page), Integer.parseInt(count)));
+            } else if (keywords != null) {
+                HttpUtil.getResponseBody(resp, userService.selectByKeywords(keywords));
+            } else {
+                HttpUtil.getResponseBody(resp, userService.getHotUsers());
+            }
+        } else {
+            System.out.println(uri);
+            HttpUtil.getResponseBody(resp, userService.getUser(Long.parseLong(HttpUtil.getPathParam(req))));
+        }
+    }
 
 
     @Override
@@ -41,7 +60,7 @@ public class UserController extends HttpServlet {
         String uri = req.getRequestURI().trim();
         switch (uri) {
             case UrlPatten.USER_SIGN_IN:
-                signIn(req,resp);
+                signIn(req, resp);
                 break;
 //            case UrlPatten.USER_SIGN_UP:
 //                signUp(req, resp);
@@ -53,6 +72,7 @@ public class UserController extends HttpServlet {
             default:
         }
     }
+
     private void signIn(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String requestBody = HttpUtil.getRequestBody(req);
         logger.info("登录用户信息：" + requestBody);
@@ -75,6 +95,10 @@ public class UserController extends HttpServlet {
             //验证码错误，直接将错误信息返回给客户端，不要继续登录流程了
             HttpUtil.getResponseBody(resp, Result.failure(ResultCode.USER_VERIFY_CODE_ERROR));
         }
+    }
+
+    private void signUp(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.getWriter().println("注册");
     }
 
 }

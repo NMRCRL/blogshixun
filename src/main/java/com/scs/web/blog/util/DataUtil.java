@@ -2,8 +2,8 @@ package com.scs.web.blog.util;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
-
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Random;
 
 /**
@@ -52,5 +52,16 @@ public class DataUtil {
         int bound=random.nextInt(6666);
         //当前日期的bound天
         return now.minusDays(bound);
+    }
+    /**
+     * 生成时间
+     *
+     * @return
+     */
+    public static LocalDateTime getCreateTime() {
+        LocalDateTime now = LocalDateTime.now();
+        Random random = new Random();
+        int bound = random.nextInt(999);
+        return now.minusHours(bound);
     }
 }

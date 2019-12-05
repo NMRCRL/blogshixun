@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * @author liu tianyuan
@@ -23,8 +24,9 @@ import java.sql.SQLException;
 
 
 public class UserServiceImpl implements UserService {
-    private UserDao userDao= DaoFactory.getUserDaoInstance();
-    private  static Logger logger= (Logger) LoggerFactory.getLogger(UserServiceImpl.class);
+    private UserDao userDao = DaoFactory.getUserDaoInstance();
+    private static Logger logger = (Logger) LoggerFactory.getLogger(UserServiceImpl.class);
+
     @Override
     public Result signIn(UserDto userDto) {
         User user = null;
@@ -49,8 +51,31 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public Result getHotUsers() {
+        List<User> userList = null;
+        try {
+            userList = userDao.selectHotUsers();
+        } catch (SQLException e) {
+            logger.error("获取热门用户出现异常");
+        }
+        if (userList != null) {
+            //成功并返回数据
+            return Result.success(userList);
+        } else {
+            return Result.failure(ResultCode.RESULT_CODE_DATA_NONE);
+        }
+    }
+
+    @Override
     public Result signUp(UserDto userDto) {
-        return null;
+        User user = new User(userDto.getMobile(), userDto.getPassword());
+        try {
+            userDao.insert(user);
+            return Result.success();
+        } catch (SQLException e) {
+            logger.error("新增用户出现异常");
+            return Result.failure(ResultCode.USER_SIGN_UP_FAIL);
+        }
     }
 
     @Override
@@ -65,6 +90,59 @@ public class UserServiceImpl implements UserService {
             return Result.success(ResultCode.USER_NOT_EXIST);
         } else {
             return Result.failure(ResultCode.USER_HAS_EXISTED);
+        }
+    }
+
+    @Override
+    public Result selectByPage(int currentPage, int count) {
+        List<User> userList = null;
+        try {
+            userList = userDao.selectByPage(currentPage, count);
+        } catch (
+                SQLException e) {
+            logger.error("分页查询用户出现异常");
+        }
+        if (userList != null) {
+            return Result.success(userList);
+        } else {
+            return Result.failure(ResultCode.RESULT_CODE_DATA_NONE);
+        }
+    }
+
+
+    @Override
+    public Result getUser(long id) {
+//        UserVo userVo = null;
+//        try {
+//            userVo = userDao.getUser(id);
+//        } catch (SQLException e) {
+//            logger.error("根据id获取用户详情出现异常");
+//        }
+//        if (userVo != null) {
+//            try {
+//                List<ArticleVo> articleVoList = articleDao.selectByUserId(id);
+//                userVo.setArticleList(articleVoList);
+//                return Result.success(userVo);
+//            } catch (SQLException e) {
+//                logger.error("根据用户id获取文章列表数据出现异常");
+//            }
+//        }
+//        return Result.failure(ResultCode.RESULT_CODE_DATA_NONE);
+        return null;
+    }
+
+    @Override
+    public Result selectByKeywords(String keywords) {
+        List<User> userList = null;
+        try {
+            userList = userDao.selectByKeywords(keywords);
+        } catch (SQLException e) {
+            logger.error("根据关键字查询用户出现异常");
+        }
+        if (userList != null) {
+            return Result.success(userList);
+        } else {
+            return Result.failure(ResultCode.RESULT_CODE_DATA_NONE);
         }
     }
 
