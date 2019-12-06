@@ -1,5 +1,6 @@
 package com.scs.web.blog.service.impl;
 
+import com.scs.web.blog.dao.ArticleDao;
 import com.scs.web.blog.dao.UserDao;
 import com.scs.web.blog.domain.dto.UserDto;
 import com.scs.web.blog.entity.User;
@@ -25,7 +26,8 @@ import java.util.List;
 
 public class UserServiceImpl implements UserService {
     private UserDao userDao = DaoFactory.getUserDaoInstance();
-    private static Logger logger = (Logger) LoggerFactory.getLogger(UserServiceImpl.class);
+    private ArticleDao articleDao = DaoFactory.getArticleDaoInstance();
+    private static Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
 
     @Override
     public Result signIn(UserDto userDto) {
@@ -33,22 +35,23 @@ public class UserServiceImpl implements UserService {
         try {
             user = userDao.findUserByMobile(userDto.getMobile());
         } catch (SQLException e) {
-            logger.error("根据手机号查询用  户出现异常");
+            logger.error("根据手机号查询用户出现异常");
         }
         if (user != null) {
             //数据库查到的用户密码和前端传递的用户密码（经过加密）相等
             if (user.getPassword().equals(DigestUtils.md5Hex(userDto.getPassword()))) {
                 //登录成功
-                return (Result) Result.success(user);
+                return Result.success(user);
             } else {
                 //密码错误
-                return (Result) Result.failure(ResultCode.USER_PASSWORD_ERROR);
+                return Result.failure(ResultCode.USER_PASSWORD_ERROR);
             }
         } else {
             //账号错误
-            return (Result) Result.failure(ResultCode.USER_ACCOUNT_ERROR);
+            return Result.failure(ResultCode.USER_ACCOUNT_ERROR);
         }
     }
+
 
     @Override
     public Result getHotUsers() {
@@ -63,33 +66,6 @@ public class UserServiceImpl implements UserService {
             return Result.success(userList);
         } else {
             return Result.failure(ResultCode.RESULT_CODE_DATA_NONE);
-        }
-    }
-
-    @Override
-    public Result signUp(UserDto userDto) {
-        User user = new User(userDto.getMobile(), userDto.getPassword());
-        try {
-            userDao.insert(user);
-            return Result.success();
-        } catch (SQLException e) {
-            logger.error("新增用户出现异常");
-            return Result.failure(ResultCode.USER_SIGN_UP_FAIL);
-        }
-    }
-
-    @Override
-    public Result checkMobile(String mobile) {
-        User user = null;
-        try {
-            user = userDao.findUserByMobile(mobile);
-        } catch (SQLException e) {
-            logger.error("根据手机号查询用户信息出现异常");
-        }
-        if (user == null) {
-            return Result.success(ResultCode.USER_NOT_EXIST);
-        } else {
-            return Result.failure(ResultCode.USER_HAS_EXISTED);
         }
     }
 
@@ -146,6 +122,32 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
+    public Result checkMobile(String mobile) {
+        User user = null;
+        try {
+            user = userDao.findUserByMobile(mobile);
+        } catch (SQLException e) {
+            logger.error("根据手机号查询用户信息出现异常");
+        }
+        if (user == null) {
+            return Result.success(ResultCode.USER_NOT_EXIST);
+        } else {
+            return Result.failure(ResultCode.USER_HAS_EXISTED);
+        }
+    }
+
+    @Override
+    public Result signUp(UserDto userDto) {
+        User user = new User(userDto.getMobile(), userDto.getPassword());
+        try {
+            userDao.insert(user);
+            return Result.success();
+        } catch (SQLException e) {
+            logger.error("新增用户出现异常");
+            return Result.failure(ResultCode.USER_SIGN_UP_FAIL);
+        }
+    }
 }
 
 

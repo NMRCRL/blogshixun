@@ -19,7 +19,7 @@ public class StringUtil {
     public static String[] getDigital(String sourceStr) {
         String[] result = new String[sourceStr.length()];
         //这个2是指连续数字的最少个数
-        Pattern p = Pattern.compile("\\d{3,}");
+        Pattern p = Pattern.compile("\\d{2,}");
         Matcher m = p.matcher(sourceStr);
         int i = 0;
         while (m.find()) {

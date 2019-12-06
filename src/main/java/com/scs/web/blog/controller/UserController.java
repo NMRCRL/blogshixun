@@ -62,9 +62,9 @@ public class UserController extends HttpServlet {
             case UrlPatten.USER_SIGN_IN:
                 signIn(req, resp);
                 break;
-//            case UrlPatten.USER_SIGN_UP:
-//                signUp(req, resp);
-//                break;
+            case UrlPatten.USER_SIGN_UP:
+                signUp(req, resp);
+                break;
             case UrlPatten.USER_CHECK_MOBILE:
                 String mobile = req.getParameter("mobile");
                 HttpUtil.getResponseBody(resp, userService.checkMobile(mobile));
