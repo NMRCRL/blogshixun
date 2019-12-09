@@ -7,24 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4321daa7-23bb-49eb-8d79-85b50abbc653" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/controller/UploadController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/dao/FollowDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/dao/RegionDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/dao/impl/FollowDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/dao/impl/RegionDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/entity/Comment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/entity/Region.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/entity/TopicFollow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/entity/UserFollow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/domain/dto/SimpleTopic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/domain/dto/SimpleUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/listener/SessionListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/logback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/logback.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Code.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/blog/Code.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/blog/WEB-INF/classes/com/scs/web/blog/controller/CodeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blog/WEB-INF/classes/com/scs/web/blog/controller/CodeController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/blog/WEB-INF/classes/com/scs/web/blog/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blog/WEB-INF/classes/com/scs/web/blog/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/blog/login.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/scs/web/blog/controller/CodeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/scs/web/blog/controller/CodeController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/scs/web/blog/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/scs/web/blog/controller/UserController.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -313,7 +300,7 @@
       <workItem from="1575617571379" duration="5717000" />
       <workItem from="1575679128271" duration="3767000" />
       <workItem from="1575683021162" duration="2255000" />
-      <workItem from="1575849591366" duration="907000" />
+      <workItem from="1575849591366" duration="8600000" />
     </task>
     <task id="LOCAL-00001" summary="第二次提交，登录接口基本完成">
       <created>1575373181111</created>
@@ -350,7 +337,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575623295428</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="第七次提交，文章，专题基础功能接口完成，唯一问题。user">
+      <created>1575850752664</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1575850752664</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -375,6 +369,7 @@
     <MESSAGE value="第三次提交，发现数据库的设计和项目关系非常重要，以及这是一个大的项目，而不是一个一个小的接口，一个大的接口，互相调用" />
     <MESSAGE value="第五次提交，代码不太理解，得先看看代码才能进行下去" />
     <MESSAGE value="第六次提交，代码基本流程理解，个别代码不太懂，尤其Controller类" />
-    <option name="LAST_COMMIT_MESSAGE" value="第六次提交，代码基本流程理解，个别代码不太懂，尤其Controller类" />
+    <MESSAGE value="第七次提交，文章，专题基础功能接口完成，唯一问题。user" />
+    <option name="LAST_COMMIT_MESSAGE" value="第七次提交，文章，专题基础功能接口完成，唯一问题。user" />
   </component>
 </project>
