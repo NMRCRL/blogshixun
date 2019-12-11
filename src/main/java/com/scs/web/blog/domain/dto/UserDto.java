@@ -4,26 +4,13 @@ import lombok.Data;
 
 import java.io.Serializable;
 
-//@Data
-//public class UserDto {
-//    private String mobile;
-//    private String password;
-//    private String code;
-//
-//    //    数据传输对象
-//    public UserDto(String mobile, String password) {
-//        this.mobile = mobile;
-//
-//        this.password = password;
-//    }
-//
-//    public UserDto() {
-//    }
-//
-//    public String getCode() {
-//        return code;
-//    }
-//}
+/**
+ * @author liu tianyuan
+ * @ClassName UserDto
+ * @Description 用户传输对象
+ * @Date 2019/11/9
+ * @Version 1.0
+ **/
 @Data
 public class UserDto implements Serializable {
     private String mobile;

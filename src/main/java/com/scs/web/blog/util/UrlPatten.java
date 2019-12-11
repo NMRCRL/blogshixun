@@ -1,11 +1,10 @@
 package com.scs.web.blog.util;
 
 /**
- * @author liu tianyuan
- * @ClassName
- * @Description
- * @Date 2019/12/3
- * @Version 1.0
+ * @ClassName UrlPatten
+ * @Description UrlPatten字符串常量
+ * @Author mq_xu
+ * @Date 2019/11/27
  **/
 public class UrlPatten {
     public static final String USER = "/api/user";

@@ -8,11 +8,10 @@ import javax.servlet.http.*;
 import java.io.IOException;
 
 /**
- * @author liu tianyuan
- * @ClassName
- * @Description
- * @Date 2019/12/6
- * @Version 1.0
+ * @ClassName LoginController
+ * @Description TODO
+ * @Author liu tianyuan
+ * @Date 2019/11/20
  **/
 @WebServlet(urlPatterns = "/api/login")
 public class LoginController extends HttpServlet {

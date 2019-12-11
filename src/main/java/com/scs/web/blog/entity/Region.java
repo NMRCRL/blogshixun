@@ -3,14 +3,11 @@ package com.scs.web.blog.entity;
 import lombok.Data;
 
 /**
- * @author liu tianyuan
- * @ClassName
- * @Description
- * @Date 2019/12/7
- * @Version 1.0
+ * @ClassName Region
+ * @Description  全国省市区地址Region实体类
+ * @Author liu tianyuan
+ * @Date 2019/11/23
  **/
-
-
 @Data
 public class Region {
     private  Integer id;

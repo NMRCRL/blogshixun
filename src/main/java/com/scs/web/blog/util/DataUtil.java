@@ -1,23 +1,24 @@
 package com.scs.web.blog.util;
 
-
+import com.scs.web.blog.entity.Region;
+import com.scs.web.blog.factory.DaoFactory;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Random;
 
-
 /**
- * @author liu tianyuan
- * @ClassName
- * @Description 数据生成工具
- * @Date 2019/12/3
+ * @author mq_xu
+ * @ClassName StingUtil
+ * @Description 模拟构造用户数据的工具类
+ * @Date 2019/11/9
  * @Version 1.0
  **/
-
 public class DataUtil {
     private static Logger logger = LoggerFactory.getLogger(DataUtil.class);
     private static final int MOBILE_COUNT = 8;
@@ -75,23 +76,23 @@ public class DataUtil {
         return now.minusDays(bound);
     }
 
-//    /**
-//     * 随机生成地址
-//     *
-//     * @return
-//     */
-//    public static String getAddress() {
-//        Random random = new Random();
-//        String address = null;
-//        try {
-//            List<Region> regionList = DaoFactory.getRegionDaoInstance().selectAll();
-//            Region region = regionList.get(random.nextInt(regionList.size()));
-//            address = region.getMergeName();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        return address;
-//    }
+    /**
+     * 随机生成地址
+     *
+     * @return
+     */
+    public static String getAddress() {
+        Random random = new Random();
+        String address = null;
+        try {
+            List<Region> regionList = DaoFactory.getRegionDaoInstance().selectAll();
+            Region region = regionList.get(random.nextInt(regionList.size()));
+            address = region.getMergeName();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return address;
+    }
 
     /**
      * 生成时间

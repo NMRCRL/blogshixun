@@ -5,6 +5,8 @@ import com.scs.web.blog.domain.vo.UserVo;
 import com.scs.web.blog.entity.User;
 import com.scs.web.blog.util.BeanHandler;
 import com.scs.web.blog.util.DbUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,15 +16,14 @@ import java.util.List;
 
 /**
  * @author liu tianyuan
- * @ClassName
- * @Description
- * @Date 2019/12/3
+ * @ClassName UserDaoImpl
+ * @Description UserDao数据访问对象接口实现类
+ * @Date 2019/11/9
  * @Version 1.0
  **/
-
-
 public class UserDaoImpl implements UserDao {
-    //新增用户
+    private static Logger logger = LoggerFactory.getLogger(UserDaoImpl.class);
+
     @Override
     public void insert(User user) throws SQLException {
         Connection connection = DbUtil.getConnection();
@@ -33,12 +34,12 @@ public class UserDaoImpl implements UserDao {
         pst.executeUpdate();
         DbUtil.close(connection, pst);
     }
-//批量新增用户
+
     @Override
     public void batchInsert(List<User> userList) throws SQLException {
         Connection connection = DbUtil.getConnection();
         connection.setAutoCommit(false);
-        String sql = "INSERT INTO t_user (id,mobile,password,nickname,avatar,gender,birthday,address,introduction,homepage,follows,fans,articles,create_time,status) VALUES (null,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
+        String sql = "INSERT INTO t_user (id,mobile,password,nickname,avatar,gender,birthday,address,introduction,banner,homepage,follows,fans,articles,create_time,status) VALUES (null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
         PreparedStatement pst = connection.prepareStatement(sql);
         userList.forEach(user -> {
             try {
@@ -50,16 +51,16 @@ public class UserDaoImpl implements UserDao {
                 pst.setObject(6, user.getBirthday());
                 pst.setString(7, user.getAddress());
                 pst.setString(8, user.getIntroduction());
-                pst.setString(9, user.getHomepage());
-                pst.setInt(10, 0);
+                pst.setString(9, user.getBanner());
+                pst.setString(10, user.getHomepage());
                 pst.setInt(11, 0);
                 pst.setInt(12, 0);
-                pst.setObject(13, user.getCreateTime());
-                pst.setShort(14, user.getStatus());
+                pst.setInt(13, 0);
+                pst.setObject(14, user.getCreateTime());
+                pst.setShort(15, user.getStatus());
                 pst.addBatch();
             } catch (SQLException e) {
-                e.printStackTrace();
-//                logger.error("批量加入用户数据产生异常");
+                logger.error("批量加入用户数据产生异常");
             }
         });
         pst.executeBatch();
@@ -67,43 +68,6 @@ public class UserDaoImpl implements UserDao {
         DbUtil.close(connection, pst);
     }
 
-//    @Override
-//    public int[] batchInsert(List<User> userList) throws SQLException {
-//        //链接数据库
-//        Connection connection= DbUtil.getConnection();
-//        //sql语句,就是数据执行的操作，括号中的为数据库的列名（主键自增，不设值），问号的个数于列名相等
-//        String sql="INSERT INTO t_user (mobile ,password,nickname,avatar,gender,birthday,introduction,create_time) VALUES(?,?,?,?,?,?,?,?)";
-//        //关闭自动提交（true为自动提交）
-//        connection.setAutoCommit(false);
-//        //执行SQL语句
-//        PreparedStatement pstmt=connection.prepareStatement(sql);
-//        //遍历，将数据存入数据库中
-//        userList.forEach(user -> {
-//            try{
-//                pstmt.setString(1,user.getMobile());
-//                pstmt.setString(2,user.getPassword());
-//                pstmt.setString(3,user.getNickname());
-//                pstmt.setString(4,user.getAvatar());
-//                pstmt.setString(5,user.getGender());
-//                //日期的设置，可以使用setObject
-//                pstmt.setObject(6,user.getBirthday());
-//                pstmt.setString(7,user.getIntroduction());
-//                pstmt.setObject(8,user.getCreateTime());
-//                //addBatch 将语句添加到同一批操作中
-//                pstmt.addBatch();
-//            } catch (SQLException e) {
-//                e.printStackTrace();
-//            }
-//        });
-//        //将添加进来的单个操作进行批操作
-//        int[]result=pstmt.executeBatch();
-//        //提交数据，将数据存入数据库
-//        connection.commit();
-//        //关闭数据库
-//        DbUtil.close(connection,pstmt);
-//        return result;
-//    }
-//根据手机号查询用户
     @Override
     public User findUserByMobile(String mobile) throws SQLException {
         Connection connection = DbUtil.getConnection();
@@ -119,7 +83,7 @@ public class UserDaoImpl implements UserDao {
         DbUtil.close(connection, pst, rs);
         return user;
     }
-//查询热门用户
+
     @Override
     public List<User> selectHotUsers() throws SQLException {
         Connection connection = DbUtil.getConnection();
@@ -130,7 +94,7 @@ public class UserDaoImpl implements UserDao {
         DbUtil.close(connection, pst, rs);
         return userList;
     }
-//查询分页用户
+
     @Override
     public List<User> selectByPage(int currentPage, int count) throws SQLException {
         Connection connection = DbUtil.getConnection();
@@ -143,7 +107,7 @@ public class UserDaoImpl implements UserDao {
         DbUtil.close(connection, pst, rs);
         return userList;
     }
-//根据id查询用户
+
     @Override
     public UserVo getUser(long id) throws SQLException {
         Connection connection = DbUtil.getConnection();
@@ -157,7 +121,7 @@ public class UserDaoImpl implements UserDao {
         DbUtil.close(connection, pst, rs);
         return userVo;
     }
-//模糊查询用户
+
     @Override
     public List<User> selectByKeywords(String keywords) throws SQLException {
         Connection connection = DbUtil.getConnection();
@@ -171,5 +135,4 @@ public class UserDaoImpl implements UserDao {
         DbUtil.close(connection, pst, rs);
         return userList;
     }
-
 }

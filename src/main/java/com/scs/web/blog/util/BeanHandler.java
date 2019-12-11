@@ -1,4 +1,5 @@
 package com.scs.web.blog.util;
+
 import com.scs.web.blog.domain.vo.ArticleVo;
 import com.scs.web.blog.entity.Article;
 import com.scs.web.blog.entity.Topic;
@@ -10,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  * @ClassName BeanHandler
  * @Description 结果集和实体类的转换工具
@@ -33,11 +35,12 @@ public class BeanHandler {
                 user.setBirthday(rs.getDate("birthday").toLocalDate());
                 user.setIntroduction(rs.getString("introduction"));
                 user.setHomepage(rs.getString("homepage"));
-
+                user.setBanner(rs.getString("banner"));
+                user.setEmail(rs.getString("email"));
                 user.setAddress(rs.getString("address"));
-                user.setFollows(rs.getShort("follows"));
-                user.setFans(rs.getShort("fans"));
-                user.setArticles(rs.getShort("articles"));
+                user.setFollows(rs.getInt("follows"));
+                user.setFans(rs.getInt("fans"));
+                user.setArticles(rs.getInt("articles"));
                 user.setCreateTime(rs.getTimestamp("create_time").toLocalDateTime());
                 user.setStatus(rs.getShort("status"));
                 userList.add(user);

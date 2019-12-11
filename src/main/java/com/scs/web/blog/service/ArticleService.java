@@ -1,13 +1,14 @@
 package com.scs.web.blog.service;
+
 import com.scs.web.blog.util.Result;
+
 /**
- * @author liu tianyuan
- * @ClassName
- * @Description
- * @Date 2019/12/6
+ * @author mq_xu
+ * @ClassName ArticleService
+ * @Description 文章服务层接口
+ * @Date 2019/11/11
  * @Version 1.0
  **/
-
 public interface ArticleService {
     /**
      * 获取热门文章

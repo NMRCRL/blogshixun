@@ -8,12 +8,11 @@ import java.time.LocalDateTime;
 
 /**
  * @author liu tianyuan
- * @ClassName
- * @Description
- * @Date 2019/12/5
+ * @ClassName Article
+ * @Description TODO
+ * @Date 21:37 2019/11/9
  * @Version 1.0
  **/
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

@@ -1,15 +1,11 @@
 package com.scs.web.blog.listener;
+
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
+
 /**
- * @author liu tianyuan
- * @ClassName
- * @Description
- * @Date 2019/12/3
- * @Version 1.0
- **/
-
-
+ * 自定义sessionContext
+ */
 public class MySessionContext {
     private static MySessionContext instance;
     private HashMap<String, HttpSession> sessionMap;

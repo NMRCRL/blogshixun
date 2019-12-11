@@ -16,12 +16,11 @@ import java.util.List;
 
 /**
  * @author liu tianyuan
- * @ClassName
- * @Description
- * @Date 2019/12/5
+ * @ClassName ArticleDaoImpl
+ * @Description 文章Dao接口实现类
+ * @Date 2019/11/10
  * @Version 1.0
  **/
-
 public class ArticleDaoImpl implements ArticleDao {
     private static Logger logger = LoggerFactory.getLogger(ArticleDaoImpl.class);
 

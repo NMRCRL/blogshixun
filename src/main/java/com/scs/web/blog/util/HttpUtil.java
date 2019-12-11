@@ -1,6 +1,5 @@
 package com.scs.web.blog.util;
 
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.slf4j.Logger;
@@ -11,12 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+
 /**
- * @author liu tianyuan
- * @ClassName
- * @Description
- * @Date 2019/12/3
- * @Version 1.0
+ * @ClassName IoUtil
+ * @Description IO工具类
+ * @Author mq_xu
+ * @Date 2019/11/27
  **/
 public class HttpUtil {
 
@@ -25,7 +24,7 @@ public class HttpUtil {
     /**
      * 根据请求对象得到缓冲字符输入流，按行读取请求体内容，构建成JSON字符串
      *
-     *
+     * @param req
      * @return
      */
     public static String getRequestBody(HttpServletRequest request) {
@@ -45,6 +44,8 @@ public class HttpUtil {
     /**
      * 将请求信息通过json的形式输出给客户端
      *
+     * @param out
+     * @param result
      */
     public static void getResponseBody(HttpServletResponse response, Result result) {
         Gson gson = new GsonBuilder().create();

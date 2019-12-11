@@ -1,4 +1,5 @@
 package com.scs.web.blog.dao;
+
 import com.scs.web.blog.domain.vo.ArticleVo;
 import com.scs.web.blog.entity.Article;
 
@@ -7,13 +8,11 @@ import java.util.List;
 
 /**
  * @author liu tianyuan
- * @ClassName
- * @Description
- * @Date 2019/12/5
+ * @ClassName ArticleDao
+ * @Description 文章Dao接口
+ * @Date 7:11 2019/11/10
  * @Version 1.0
  **/
-
-
 public interface ArticleDao {
     /**
      * 批量新增文章
@@ -35,7 +34,9 @@ public interface ArticleDao {
     /**
      * 分页获得文章数据
      *
-     *
+     * @param currentPage
+     * @param count
+     * @return
      * @throws SQLException
      */
     List<ArticleVo> selectByPage(int currentPage, int count) throws SQLException;

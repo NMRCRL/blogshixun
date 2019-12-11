@@ -1,12 +1,12 @@
 package com.scs.web.blog.domain.dto;
 
 import lombok.Data;
+
 /**
- * @author liu tianyuan
- * @ClassName
- * @Description
- * @Date 2019/12/9
- * @Version 1.0
+ * @ClassName SimpleTopic
+ * @Description 简单的专题类，id、logo、名称
+ * @Author iu tianyuan
+ * @Date 2019/11/23
  **/
 @Data
 public class SimpleTopic {

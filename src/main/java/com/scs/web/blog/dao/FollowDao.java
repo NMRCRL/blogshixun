@@ -7,13 +7,11 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- * @author liu tianyuan
- * @ClassName
- * @Description
- * @Date 2019/12/7
- * @Version 1.0
+ * @ClassName FollowDao
+ * @Description FollowDao
+ * @Author liu tianyuan
+ * @Date 2019/11/29
  **/
-
 public interface FollowDao {
     /**
      * 根据用户id获取他关注的用户列表
@@ -31,7 +29,7 @@ public interface FollowDao {
      * @return
      * @throws SQLException
      */
-    List<User> getUserFans(long userId) throws SQLException, SQLException;
+    List<User> getUserFans(long userId) throws SQLException;
 
     /**
      * 根据专题id获取其所有关注用户

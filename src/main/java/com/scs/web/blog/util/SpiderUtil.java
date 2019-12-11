@@ -14,45 +14,62 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author mq_xu
  * @ClassName JSoupSpider
- * @Description JSoup实现的一个爬虫工具
- * @Date 9:13 2019/11/7
+ * @Description JSoup爬虫，抓取数据
+ * @Date 2019/11/7
  * @Version 1.0
  **/
-public class JSoupSpider {
-    private static Logger logger = LoggerFactory.getLogger(JSoupSpider.class);
-    private static final int PAGE_COUNT = 1;
+public class SpiderUtil {
+    private static Logger logger = LoggerFactory.getLogger(SpiderUtil.class);
 
+    private static final int PAGE_COUNT = 1;
+    private  static  Text text = new Text();
+
+    /**
+     * 爬取简书网热门作者数据
+     *
+     * @return
+     */
     public static List<User> getUsers() {
         Document document = null;
         List<User> userList = new ArrayList<>(100);
-        for (int i = 1; i <= 3; i++) {
+        for (int i = 1; i <= PAGE_COUNT; i++) {
             try {
                 document = Jsoup.connect("https://www.jianshu.com/recommendations/users?utm_source=desktop&utm_medium=index-users&page=" + i).get();
             } catch (IOException e) {
                 logger.error("连接失败");
             }
+            assert document != null;
             Elements divs = document.getElementsByClass("col-xs-8");
             divs.forEach(div -> {
                 Element wrapDiv = div.child(0);
                 Element link = wrapDiv.child(0);
                 Elements linkChildren = link.children();
-                User user = new User();
-                user.setMobile(DataUtil.getMobile());
-                user.setPassword(DataUtil.getPassword());
-                user.setGender(DataUtil.getGender());
-                user.setAvatar("https:" + linkChildren.get(0).attr("src"));
-                user.setNickname(linkChildren.get(1).text());
-                user.setIntroduction(linkChildren.get(2).text());
-                user.setBirthday(DataUtil.getBirthday());
-                user.setCreateTime(LocalDateTime.now());
-                userList.add(user);
+                String introduction = linkChildren.get(2).text();
+                if (introduction != null && !"".equals(introduction)) {
+                    User user = new User();
+                    String linkHref = link.attr("href");
+                    user.setMobile(DataUtil.getMobile());
+                    user.setPassword(DataUtil.getPassword());
+                    user.setGender(DataUtil.getGender());
+                    String imgUrl = "https:" + linkChildren.get(0).attr("src");
+                    user.setAvatar(imgUrl);
+                    user.setNickname(linkChildren.get(1).text());
+                    user.setIntroduction(introduction);
+                    //头像暂作为背景banner
+                    user.setBanner(imgUrl);
+                    user.setHomepage("https://www.jianshu.com" + linkHref);
+                    user.setBirthday(DataUtil.getBirthday());
+                    user.setAddress(DataUtil.getAddress());
+                    user.setCreateTime(DataUtil.getCreateTime());
+                    user.setStatus((short) 1);
+                    userList.add(user);
+                }
             });
         }
         return userList;
@@ -92,7 +109,7 @@ public class JSoupSpider {
                 assert document1 != null;
                 Element articleElement = document1.getElementsByClass("_2rhmJa").get(0);
                 Article article = new Article();
-                article.setContent(articleElement.html());
+                article.setContent(Text.StripHT(articleElement.html()));
                 Elements elements = div.children();
                 Element linkElement = elements.get(0);
                 Element divElement = elements.get(1);
@@ -161,7 +178,7 @@ public class JSoupSpider {
                 topic.setCreateTime(DataUtil.getCreateTime());
                 topicList.add(topic);
             });
-            }
+        }
         return topicList;
     }
 
@@ -169,4 +186,3 @@ public class JSoupSpider {
     public static void main(String[] args) {
     }
 }
-

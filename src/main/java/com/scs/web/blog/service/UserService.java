@@ -4,14 +4,12 @@ import com.scs.web.blog.domain.dto.UserDto;
 import com.scs.web.blog.util.Result;
 
 /**
- * @author liu tianyuan
- * @ClassName
- * @Description
- * @Date 2019/12/3
+ * @author mq_xu
+ * @ClassName UserService
+ * @Description 用户业务逻辑接口
+ * @Date 12:01 2019/11/9
  * @Version 1.0
  **/
-
-
 public interface UserService {
     /**
      * 用户登录功能
@@ -33,7 +31,7 @@ public interface UserService {
      * @param count
      * @return Result
      */
-    Result selectByPage(int currentPage,int count);
+    Result selectByPage(int currentPage, int count);
 
     /**
      * 根据id查询用户详情数据

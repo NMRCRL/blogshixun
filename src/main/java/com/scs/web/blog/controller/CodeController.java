@@ -1,4 +1,5 @@
 package com.scs.web.blog.controller;
+
 import com.scs.web.blog.util.ImageUtil;
 import com.scs.web.blog.util.StringUtil;
 
@@ -9,14 +10,14 @@ import javax.servlet.http.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.OutputStream;
+
 /**
  * @author liu tianyuan
- * @ClassName
- * @Description
- * @Date 2019/12/6
+ * @ClassName CodeController
+ * @Description 验证码请求接口
+ * @Date 2019/11/14
  * @Version 1.0
  **/
-
 @WebServlet(urlPatterns = {"/api/code"})
 public class CodeController extends HttpServlet {
 

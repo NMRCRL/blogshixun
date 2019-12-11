@@ -13,76 +13,72 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- * @author liu tianyuan
- * @ClassName
- * @Description
- * @Date 2019/12/6
+ * @author mq_xu
+ * @ClassName ArticleServiceImpl
+ * @Description TODO
+ * @Date 22:49 2019/11/11
  * @Version 1.0
  **/
-
-
 public class ArticleServiceImpl implements ArticleService {
-    private ArticleDao articleDao= DaoFactory.getArticleDaoInstance();
-    private static Logger logger= LoggerFactory.getLogger(ArticleServiceImpl.class);
+    private ArticleDao articleDao = DaoFactory.getArticleDaoInstance();
+    private static Logger logger = LoggerFactory.getLogger(ArticleServiceImpl.class);
 
-
-//查询热门文章
     @Override
     public Result getHotArticles() {
-        List<ArticleVo> articleVoList=null;
-        try{
-            articleVoList=articleDao.selectHotArticles();
+        List<ArticleVo> articleVoList = null;
+        try {
+            articleVoList = articleDao.selectHotArticles();
         } catch (SQLException e) {
-            logger.error("查询热门文章出错");
+            logger.error("查询热门文章出现异常");
         }
-        if (articleVoList!=null) {
+        if (articleVoList != null) {
             return Result.success(articleVoList);
-        }else {
+        } else {
             return Result.failure(ResultCode.RESULT_CODE_DATA_NONE);
         }
     }
-//查询分页用户
+
     @Override
     public Result getArticlesByPage(int currentPage, int count) {
-        List<ArticleVo> articleVoList=null;
-        try{
-            articleVoList=articleDao.selectByPage(currentPage,count);
+        List<ArticleVo> articleVoList = null;
+        try {
+            articleVoList = articleDao.selectByPage(currentPage, count);
         } catch (SQLException e) {
-            logger.error("查询分页文章出现问题");
+            logger.error("分页查询文章出现异常");
         }
-        if (articleVoList!=null){
+        if (articleVoList != null) {
             return Result.success(articleVoList);
-        }else {
+        } else {
             return Result.failure(ResultCode.RESULT_CODE_DATA_NONE);
         }
     }
-//根据id查询文章
+
     @Override
     public Result getArticle(long id) {
-        ArticleVo articleVo=null;
-        try{
-            articleVo=articleDao.getArticle(id);
+        ArticleVo articleVo = null;
+        try {
+            articleVo = articleDao.getArticle(id);
         } catch (SQLException e) {
-            logger.error("根据id查询文章出现问题");
+            logger.error("根据id查询文章出现异常");
         }
-        if (articleVo!=null){
+        if (articleVo != null) {
             return Result.success(articleVo);
-        }else{
+        } else {
             return Result.failure(ResultCode.RESULT_CODE_DATA_NONE);
         }
     }
-//根据关键字查询文章
+
     @Override
     public Result selectByKeywords(String keywords) {
-        List<ArticleVo> articleVoList=null;
-        try{
-            articleVoList=articleDao.selectByKeywords(keywords);
-        }catch (SQLException e){
+        List<ArticleVo> articleVoList = null;
+        try {
+            articleVoList = articleDao.selectByKeywords(keywords);
+        } catch (SQLException e) {
             logger.error("根据关键字查询文章出现异常");
         }
-        if (articleVoList!=null){
+        if (articleVoList != null) {
             return Result.success(articleVoList);
-        }else {
+        } else {
             return Result.failure(ResultCode.RESULT_CODE_DATA_NONE);
         }
     }

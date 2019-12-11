@@ -1,13 +1,14 @@
 package com.scs.web.blog.entity;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 /**
- * @author liu tianyuan
- * @ClassName
- * @Description
- * @Date 2019/12/7
- * @Version 1.0
+ * @ClassName UserFollow
+ * @Description 关注用户实体
+ * @Author liu tianyuan
+ * @Date 2019/11/29
  **/
 @Data
 @AllArgsConstructor

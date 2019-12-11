@@ -1,13 +1,13 @@
 package com.scs.web.blog.domain.dto;
-import lombok.Data;
-/**
- * @author liu tianyuan
- * @ClassName
- * @Description
- * @Date 2019/12/9
- * @Version 1.0
- **/
 
+import lombok.Data;
+
+/**
+ * @ClassName SimpleUser
+ * @Description 简单的用户类，id、头像、昵称
+ * @Author liu tianyuan
+ * @Date 2019/11/23
+ **/
 @Data
 public class SimpleUser {
     private Long id;

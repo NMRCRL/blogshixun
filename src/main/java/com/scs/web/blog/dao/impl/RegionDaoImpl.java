@@ -10,12 +10,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 /**
- * @author liu tianyuan
- * @ClassName
- * @Description
- * @Date 2019/12/7
- * @Version 1.0
+ * @ClassName liu tianyuan
+ * @Description TODO
+ * @Author mq_xu
+ * @Date 2019/11/23
  **/
 public class RegionDaoImpl implements RegionDao {
 

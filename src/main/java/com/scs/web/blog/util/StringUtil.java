@@ -1,12 +1,14 @@
 package com.scs.web.blog.util;
+
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 /**
- * @author liu tianyuan
- * @ClassName
- * @Description
- * @Date 2019/12/4
+ * @author mq_xu
+ * @ClassName StringUtil
+ * @Description 字符串工具类
+ * @Date 2019/11/14
  * @Version 1.0
  **/
 public class StringUtil {

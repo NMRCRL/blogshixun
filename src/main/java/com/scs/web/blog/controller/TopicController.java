@@ -18,12 +18,11 @@ import java.io.PrintWriter;
 
 /**
  * @author liu tianyuan
- * @ClassName
- * @Description
- * @Date 2019/12/6
+ * @ClassName TopicController
+ * @Description 专题控制器
+ * @Date 2019/11/16
  * @Version 1.0
  **/
-
 @WebServlet(urlPatterns = {"/api/topic", "/api/topic/*"})
 public class TopicController extends HttpServlet {
     private TopicService topicService = ServiceFactory.getTopicServiceInstance();

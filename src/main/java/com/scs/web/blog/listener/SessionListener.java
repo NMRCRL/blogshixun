@@ -1,17 +1,14 @@
 package com.scs.web.blog.listener;
+
 import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
 /**
- * @author liu tianyuan
- * @ClassName
- * @Description
- * @Date 2019/12/9
- * @Version 1.0
- **/
-
+ * @author mqxu
+ * Session监听器
+ */
 @WebListener
 public class SessionListener implements HttpSessionListener {
 

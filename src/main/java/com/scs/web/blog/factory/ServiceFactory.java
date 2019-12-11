@@ -9,19 +9,17 @@ import com.scs.web.blog.service.impl.UserServiceImpl;
 
 /**
  * @author liu tianyuan
- * @ClassName
- * @Description
- * @Date 2019/12/3
+ * @ClassName ServiceFactory
+ * @Description Service工厂类
+ * @Date 10:56 2019/11/7
  * @Version 1.0
  **/
-
 public class ServiceFactory {
     public static UserService getUserServiceInstance() {
         return new UserServiceImpl();
     }
 
-    public static ArticleService getArticleServiceInstance()
-    {
+    public static ArticleService getArticleServiceInstance() {
         return new ArticleServiceImpl();
     }
 

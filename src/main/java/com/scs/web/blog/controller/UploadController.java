@@ -1,4 +1,5 @@
 package com.scs.web.blog.controller;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -9,13 +10,11 @@ import javax.servlet.http.Part;
 import java.io.IOException;
 
 /**
- * @author liu tianyuan
- * @ClassName
- * @Description
- * @Date 2019/12/7
- * @Version 1.0
+ * @ClassName UploadController
+ * @Description 上传图片控制器
+ * @Author liu tianyuan
+ * @Date 2019/11/20
  **/
-
 @MultipartConfig(maxFileSize = 1024 * 1024 * 50)
 @WebServlet(urlPatterns = "/api/upload")
 public class UploadController extends HttpServlet {

@@ -8,9 +8,9 @@ import java.util.List;
 
 /**
  * @author liu tianyuan
- * @ClassName
- * @Description
- * @Date 2019/12/5
+ * @ClassName TopicDao
+ * @Description TODO
+ * @Date 2019/11/14
  * @Version 1.0
  **/
 public interface TopicDao {
@@ -46,7 +46,7 @@ public interface TopicDao {
      * @return
      * @throws SQLException
      */
-    List<Topic> selectByPage(int currentPage,int count)throws SQLException;
+    List<Topic> selectByPage(int currentPage, int count)throws SQLException;
 
     /**
      * 根据id获取专题详情

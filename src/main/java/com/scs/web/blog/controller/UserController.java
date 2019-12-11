@@ -10,6 +10,7 @@ import com.scs.web.blog.util.HttpUtil;
 import com.scs.web.blog.util.Result;
 import com.scs.web.blog.util.ResultCode;
 import com.scs.web.blog.util.UrlPatten;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletException;
@@ -19,20 +20,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.logging.Logger;
 
 /**
  * @author liu tianyuan
- * @ClassName
- * @Description
- * @Date 2019/12/3
+ * @ClassName UserController
+ * @Description 用户控制器
+ * @Date 2019/11/9
  * @Version 1.0
  **/
-
 @WebServlet(urlPatterns = {"/api/user", "/api/user/*"})
 public class UserController extends HttpServlet {
-    private static Logger logger = (Logger) LoggerFactory.getLogger(UserController.class);
+
+    private static Logger logger = LoggerFactory.getLogger(UserController.class);
     private UserService userService = ServiceFactory.getUserServiceInstance();
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -97,8 +98,8 @@ public class UserController extends HttpServlet {
         }
     }
 
+
     private void signUp(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.getWriter().println("注册");
     }
-
 }

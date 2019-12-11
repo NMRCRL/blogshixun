@@ -1,4 +1,5 @@
 package com.scs.web.blog.dao.impl;
+
 import com.scs.web.blog.dao.TopicDao;
 import com.scs.web.blog.domain.vo.TopicVo;
 import com.scs.web.blog.entity.Topic;
@@ -13,11 +14,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+
 /**
  * @author liu tianyuan
- * @ClassName
- * @Description
- * @Date 2019/12/5
+ * @ClassName TopicDaoImpl
+ * @Description 专题Dao接口实现类
+ * @Date 2019/11/16
  * @Version 1.0
  **/
 public class TopicDaoImpl implements TopicDao {

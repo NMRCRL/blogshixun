@@ -7,14 +7,11 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 /**
- * @author liu tianyuan
- * @ClassName
- * @Description
- * @Date 2019/12/7
- * @Version 1.0
+ * @ClassName Comment
+ * @Description TODO
+ * @Author liu tianyuan
+ * @Date 2019/11/29
  **/
-
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

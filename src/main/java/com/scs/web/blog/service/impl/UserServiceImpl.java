@@ -3,6 +3,8 @@ package com.scs.web.blog.service.impl;
 import com.scs.web.blog.dao.ArticleDao;
 import com.scs.web.blog.dao.UserDao;
 import com.scs.web.blog.domain.dto.UserDto;
+import com.scs.web.blog.domain.vo.ArticleVo;
+import com.scs.web.blog.domain.vo.UserVo;
 import com.scs.web.blog.entity.User;
 import com.scs.web.blog.factory.DaoFactory;
 import com.scs.web.blog.service.UserService;
@@ -16,14 +18,12 @@ import java.sql.SQLException;
 import java.util.List;
 
 /**
- * @author liu tianyuan
- * @ClassName
- * @Description
- * @Date 2019/12/3
+ * @author mq_xu
+ * @ClassName UserServiceImpl
+ * @Description 用户业务逻辑接口实现类
+ * @Date 2019/11/9
  * @Version 1.0
  **/
-
-
 public class UserServiceImpl implements UserService {
     private UserDao userDao = DaoFactory.getUserDaoInstance();
     private ArticleDao articleDao = DaoFactory.getArticleDaoInstance();
@@ -88,23 +88,22 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Result getUser(long id) {
-//        UserVo userVo = null;
-//        try {
-//            userVo = userDao.getUser(id);
-//        } catch (SQLException e) {
-//            logger.error("根据id获取用户详情出现异常");
-//        }
-//        if (userVo != null) {
-//            try {
-//                List<ArticleVo> articleVoList = articleDao.selectByUserId(id);
-//                userVo.setArticleList(articleVoList);
-//                return Result.success(userVo);
-//            } catch (SQLException e) {
-//                logger.error("根据用户id获取文章列表数据出现异常");
-//            }
-//        }
-//        return Result.failure(ResultCode.RESULT_CODE_DATA_NONE);
-        return null;
+        UserVo userVo = null;
+        try {
+            userVo = userDao.getUser(id);
+        } catch (SQLException e) {
+            logger.error("根据id获取用户详情出现异常");
+        }
+        if (userVo != null) {
+            try {
+                List<ArticleVo> articleVoList = articleDao.selectByUserId(id);
+                userVo.setArticleList(articleVoList);
+                return Result.success(userVo);
+            } catch (SQLException e) {
+                logger.error("根据用户id获取文章列表数据出现异常");
+            }
+        }
+        return Result.failure(ResultCode.RESULT_CODE_DATA_NONE);
     }
 
     @Override
@@ -149,6 +148,3 @@ public class UserServiceImpl implements UserService {
         }
     }
 }
-
-
-
