@@ -25,6 +25,7 @@ public class CodeController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //获取随机验证码
         String code = StringUtil.getRandomString();
+        System.out.println(code);
         //存入session
         HttpSession session = req.getSession();
         session.setAttribute("code", code);
