@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class Comment {
     private Long id;
+    private String nickname;
     private Long userId;
     private Long articleId;
     private String content;
