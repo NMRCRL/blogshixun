@@ -1,8 +1,10 @@
 package com.scs.web.blog.domain.vo;
+
 import com.scs.web.blog.entity.User;
 import lombok.Data;
 
 import javax.xml.stream.events.Comment;
+
 /**
  * @author liu tianyuan
  * @ClassName
@@ -16,6 +18,5 @@ public class CommentVo {
     private String nickname;
     private Comment comment;
     private User user;
-
 
 }

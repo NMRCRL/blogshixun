@@ -24,7 +24,7 @@ public interface CommentService {
     List<Comment> listComment();
     /**
      * 根据文章id查询所有评论信息
-     * @param id
+     * @param
      * @return
      */
 

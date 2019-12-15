@@ -73,8 +73,6 @@ public class CommentController extends HttpServlet {
         System.out.println(user);
         //插入数据库，并返回该行主键
         Result rs = commentService.addArtComments(user);
-        //补全user的id字段信息
-        //通过response对象返回Json信息
         PrintWriter out = resp.getWriter();
         out.print(gson.toJson(rs));
         out.close();

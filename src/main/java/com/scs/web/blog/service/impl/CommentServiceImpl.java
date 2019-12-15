@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.List;
+
 /**
  * @author liu tianyuan
  * @ClassName
@@ -26,6 +27,7 @@ public class CommentServiceImpl implements CommentService {
     private UserDao userDao = DaoFactory.getUserDaoInstance();
     private CommentDao commentDao = DaoFactory.getCommentDaoInstance();
     private Logger logger = LoggerFactory.getLogger(CommentService.class);
+
     @Override
     public Result addArtComments(Comment comment) {
         int n = 0;
@@ -37,7 +39,7 @@ public class CommentServiceImpl implements CommentService {
         } catch (SQLException e) {
             logger.error("评论内容添加失败");
         }
-        if(n != 0){
+        if (n != 0) {
             return Result.success(n);
         }
         return Result.failure(ResultCode.RESULT_CODE_DATA_NONE);
@@ -48,7 +50,7 @@ public class CommentServiceImpl implements CommentService {
     public List<Comment> listComment() {
         List<Comment> comments = null;
         try {
-            comments=commentDao.selectAll();
+            comments = commentDao.selectAll();
         } catch (SQLException e) {
             System.err.println("查询所有用户异常");
         }
