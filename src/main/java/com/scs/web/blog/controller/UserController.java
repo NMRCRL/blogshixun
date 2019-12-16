@@ -12,14 +12,17 @@ import com.scs.web.blog.util.ResultCode;
 import com.scs.web.blog.util.UrlPatten;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+import com.scs.web.blog.util.ResponseObject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Map;
 
 /**
  * @author liu tianyuan
@@ -33,6 +36,7 @@ public class UserController extends HttpServlet {
 
     private static Logger logger = LoggerFactory.getLogger(UserController.class);
     private UserService userService = ServiceFactory.getUserServiceInstance();
+
 
 
     @Override
@@ -100,6 +104,61 @@ public class UserController extends HttpServlet {
 
 
     private void signUp(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.getWriter().println("注册");
+        BufferedReader reader = req.getReader();
+        StringBuilder stringBuilder = new StringBuilder();
+        String line = null;
+        while ((line = reader.readLine()) != null) {
+            stringBuilder.append(line);
+        }
+        System.out.println(stringBuilder.toString());
+        Gson gson = new GsonBuilder().create();
+        Map<String, Object> map = null;
+        // 获取请求路径
+        UserDto userDto = gson.fromJson(stringBuilder.toString(), UserDto.class);
+        String requestPath = req.getRequestURI().trim();
+        PrintWriter out = resp.getWriter();
+        Result result = userService.signUp(userDto);
+        resp.setContentType("application/json;charset=utf-8");
+        int code = resp.getStatus();
+        String msg = code == 200 ? "成功":"失败";
+        ResponseObject ro = ResponseObject.success(code,msg,userDto);
+        PrintWriter out1 = resp.getWriter();
+        out.print(gson.toJson(ro));
+        out.close();
+    }
+
+    private void getUser(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        String info = req.getPathInfo().trim();
+        //取得路径参数
+        String id = info.substring(info.indexOf("/") + 1);
+        Gson gson = new GsonBuilder().create();
+        Result result = userService.getUser(Long.parseLong(id));
+        PrintWriter out = resp.getWriter();
+        out.print(gson.toJson(result));
+        out.close();
+    }
+
+    private void getUsersByKeywords(HttpServletResponse resp, String keywords) throws IOException {
+        Gson gson = new GsonBuilder().create();
+        Result result = userService.selectByKeywords(keywords);
+        PrintWriter out = resp.getWriter();
+        out.print(gson.toJson(result));
+        out.close();
+    }
+
+    private void getUsersByPage(HttpServletResponse resp, int page, int count) throws IOException {
+        Gson gson = new GsonBuilder().create();
+        Result result = userService.selectByPage(page, count);
+        PrintWriter out = resp.getWriter();
+        out.print(gson.toJson(result));
+        out.close();
+    }
+
+    private void getHotUsers(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        Gson gson = new GsonBuilder().create();
+        Result result = userService.getHotUsers();
+        PrintWriter out = resp.getWriter();
+        out.print(gson.toJson(result));
+        out.close();
     }
 }

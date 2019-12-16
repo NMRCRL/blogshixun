@@ -57,10 +57,11 @@ public class SpiderUtil {
                     user.setMobile(DataUtil.getMobile());
                     user.setPassword(DataUtil.getPassword());
                     user.setGender(DataUtil.getGender());
-                    String imgUrl = "https:" + linkChildren.get(0).attr("src");
+                    String imgUrl = linkChildren.get(0).attr("src");
                     user.setAvatar(imgUrl);
                     user.setNickname(linkChildren.get(1).text());
                     user.setIntroduction(introduction);
+                    //头像暂作为背景banner
                     //头像暂作为背景banner
                     user.setBanner(imgUrl);
                     user.setHomepage("https://www.jianshu.com" + linkHref);

@@ -27,10 +27,13 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void insert(User user) throws SQLException {
         Connection connection = DbUtil.getConnection();
-        String sql = "INSERT INTO t_user (mobile,password) VALUES (?,?) ";
+        String sql = "INSERT INTO t_user (mobile,password,nickname,gender,avatar ) VALUES (?,?,?,?,?) ";
         PreparedStatement pst = connection.prepareStatement(sql);
         pst.setString(1, user.getMobile());
         pst.setString(2, user.getPassword());
+        pst.setString(3,user.getNickname());
+        pst.setString(4,user.getGender());
+        pst.setString(5,"https://upload.jianshu.io/users/upload_avatars/9988193/fc26c109-1ae6-4327-a298-2def343e9cd8.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/180/h/180");
         pst.executeUpdate();
         DbUtil.close(connection, pst);
     }

@@ -40,4 +40,11 @@ public class User {
         this.mobile = mobile;
         this.password = password;
     }
+    public User(String mobile, String password,String nickname,String gender,String avatar){
+        this.mobile = mobile;
+        this.password = password;
+        this.nickname=nickname;
+        this.gender=gender;
+        this.avatar=avatar;
+    }
 }

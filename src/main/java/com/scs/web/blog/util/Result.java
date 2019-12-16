@@ -60,4 +60,6 @@ public class Result implements Serializable {
         this.code = code.code();
         this.msg = code.message();
     }
+
+
 }
