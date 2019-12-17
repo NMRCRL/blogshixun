@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -138,7 +139,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Result signUp(UserDto userDto) {
-        User user = new User(userDto.getMobile(), userDto.getPassword(),userDto.getNickname(),userDto.getGender(),userDto.getAvatar());
+        User user = new User(userDto.getMobile(), DigestUtils.md5Hex(userDto.getPassword()),userDto.getNickname(),userDto.getAvatar(),userDto.getBirthDay(), LocalDateTime.now());
         try {
             userDao.insert(user);
             return Result.success();

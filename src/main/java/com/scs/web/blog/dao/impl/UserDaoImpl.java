@@ -8,10 +8,7 @@ import com.scs.web.blog.util.DbUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 /**
@@ -27,13 +24,15 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void insert(User user) throws SQLException {
         Connection connection = DbUtil.getConnection();
-        String sql = "INSERT INTO t_user (mobile,password,nickname,gender,avatar ) VALUES (?,?,?,?,?) ";
+        String sql = "INSERT INTO t_user (mobile,password,nickname,avatar,birthday,create_time) VALUES (?,?,?,?,?,?) ";
         PreparedStatement pst = connection.prepareStatement(sql);
         pst.setString(1, user.getMobile());
         pst.setString(2, user.getPassword());
-        pst.setString(3,user.getNickname());
-        pst.setString(4,user.getGender());
-        pst.setString(5,"https://upload.jianshu.io/users/upload_avatars/9988193/fc26c109-1ae6-4327-a298-2def343e9cd8.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/180/h/180");
+        pst.setString(3, user.getNickname());
+        pst.setString(4,user.getAvatar());
+       pst.setDate(5, Date.valueOf(user.getBirthday()));
+       pst.setTimestamp(6, Timestamp.valueOf(user.getCreateTime()));
+
         pst.executeUpdate();
         DbUtil.close(connection, pst);
     }
