@@ -29,6 +29,6 @@ public class ServiceFactory {
         return new TopicServiceImpl();
     }
 
-
+    public static CommentService getCommentServiceINstance(){return  new CommentServiceImpl(); }
     public static CommentService getCommentServiceInstance() { return new CommentServiceImpl(); }
 }

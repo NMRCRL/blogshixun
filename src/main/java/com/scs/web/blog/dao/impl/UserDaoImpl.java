@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -136,5 +137,33 @@ public class UserDaoImpl implements UserDao {
         List<User> userList = BeanHandler.convertUser(rs);
         DbUtil.close(connection, pst, rs);
         return userList;
+    }
+    @Override
+    public boolean updateInfo(int userId, String avatar, String nickname, String mobile, String password, String gender, LocalDate birthday, String introduction) {
+        Connection connection = DbUtil.getConnection();
+        try {
+            String sql = "UPDATE `t_user` t " +
+                    "SET t.`mobile` = ? , t.`password` = ? , t.`nickname` = ? , t.`avatar` = ? , t.`gender` = ? , t.`birthday` = ? , t.`introduction` = ? " +
+                    " WHERE t.`id` = ? ";
+            logger.info(sql);
+            PreparedStatement pst = connection.prepareStatement(sql);
+            pst.setString(1, mobile);
+            pst.setString(2, password);
+            pst.setString(3, nickname);
+            pst.setString(4, avatar);
+            pst.setString(5, gender);
+            pst.setObject(6, birthday);
+            pst.setString(7, introduction);
+            pst.setObject(8, userId);
+            int i = pst.executeUpdate();
+            if (i > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

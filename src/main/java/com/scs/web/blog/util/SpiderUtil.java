@@ -118,7 +118,7 @@ public class SpiderUtil {
                 article.setTopicId(DataUtil.getUserId());
                 article.setTitle(divElement.child(0).text());
                 article.setSummary(divElement.child(1).text());
-                String img = "https:" + linkElement.child(0).attr("src");
+                String img = linkElement.child(0).attr("src");
                 int index = img.indexOf("?");
                 article.setThumbnail(img.substring(0, index));
                 Elements metaChildren = divElement.child(2).children();

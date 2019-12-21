@@ -8,10 +8,8 @@ import com.scs.web.blog.util.DbUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -169,6 +167,24 @@ public class ArticleDaoImpl implements ArticleDao {
         articleVo.getArticle().setContent(rs.getString("content"));
         DbUtil.close(connection, pst, rs);
         return articleVo;
+    }
+
+    @Override
+    public int insert(Article article) throws SQLException {
+        Connection connection = DbUtil.getConnection();
+        String sql = "INSERT INTO t_article(user_id,topic_id,title,content,thumbnail,summary,comments,likes,create_time) VALUES(?,?,?,?,?,?,?,?,?)";
+        PreparedStatement pst = connection.prepareStatement(sql);
+        pst.setLong(1, article.getUserId());
+        pst.setLong(2, article.getTopicId());
+        pst.setString(3, article.getTitle());
+        pst.setString(4, article.getContent());
+        pst.setString(5, article.getThumbnail());
+        pst.setString(6, article.getSummary());
+        pst.setInt(7, article.getComments());
+        pst.setInt(8, article.getLikes());
+        pst.setObject(9, Timestamp.valueOf(LocalDateTime.now()));
+        int i = pst.executeUpdate();
+        return i;
     }
 
 }

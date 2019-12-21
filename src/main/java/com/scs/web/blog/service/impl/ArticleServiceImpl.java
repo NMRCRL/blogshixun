@@ -1,7 +1,9 @@
 package com.scs.web.blog.service.impl;
 
 import com.scs.web.blog.dao.ArticleDao;
+import com.scs.web.blog.domain.dto.ArticleDto;
 import com.scs.web.blog.domain.vo.ArticleVo;
+import com.scs.web.blog.entity.Article;
 import com.scs.web.blog.factory.DaoFactory;
 import com.scs.web.blog.service.ArticleService;
 import com.scs.web.blog.util.Result;
@@ -10,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -81,5 +84,19 @@ public class ArticleServiceImpl implements ArticleService {
         } else {
             return Result.failure(ResultCode.RESULT_CODE_DATA_NONE);
         }
+    }
+
+    @Override
+    public Result insertArticle(ArticleDto articleDto) {
+        Article article = new Article(articleDto.getUserId(), articleDto.getTopicId(), articleDto.getTitle(), articleDto.getSummary(), articleDto.getThumbnail(), articleDto.getContent(), articleDto.getLikes(), articleDto.getComment(), LocalDateTime.now());
+        try {
+            articleDao.insert(article);
+            return Result.success();
+        } catch (SQLException e) {
+            logger.error("新增文章失败");
+            return Result.failure(ResultCode.USER_ACCOUNT_ERROR);
+        }
+
+
     }
 }

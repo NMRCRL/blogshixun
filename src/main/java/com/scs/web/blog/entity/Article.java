@@ -25,7 +25,20 @@ public class Article {
     private String thumbnail;
     private String content;
     private Integer likes;
-    private Integer comments;
+    private int comments;
     private LocalDateTime createTime;
 
+    public Article(Long userId,Long topicId,String title,String summary ,String thumbnail,String content,int likes,int comments,LocalDateTime createTime){
+        this.userId=userId;
+        this.topicId=topicId;
+        this.title=title;
+        this.summary=summary;
+        this.thumbnail=thumbnail;
+        this.content=content;
+        this.likes=likes;
+        this.comments=comments;
+        this.createTime=createTime;
+    }
+
 }
+

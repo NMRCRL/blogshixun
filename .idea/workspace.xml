@@ -7,20 +7,58 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4321daa7-23bb-49eb-8d79-85b50abbc653" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/domain/dto/ArticleDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/domain/dto/UserUpdateDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/controller/ArticleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/controller/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/dao/ArticleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/dao/ArticleDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/dao/CommentDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/dao/CommentDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/dao/UserDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/dao/impl/ArticleDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/dao/impl/ArticleDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/dao/impl/CommentDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/dao/impl/CommentDaoImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/dao/impl/UserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/dao/impl/UserDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/domain/dto/CommentDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/domain/dto/CommentDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/domain/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/domain/dto/UserDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/entity/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/entity/Article.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/factory/ServiceFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/factory/ServiceFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/service/ArticleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/service/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/service/CommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/service/impl/ArticleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/service/impl/ArticleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/service/impl/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/service/impl/CommentServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/util/BeanHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/util/BeanHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/util/SpiderUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/util/SpiderUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/util/UrlPatten.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/scs/web/blog/util/UrlPatten.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blog/WEB-INF/classes/com/scs/web/blog/controller/ArticleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blog/WEB-INF/classes/com/scs/web/blog/controller/ArticleController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blog/WEB-INF/classes/com/scs/web/blog/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blog/WEB-INF/classes/com/scs/web/blog/controller/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blog/WEB-INF/classes/com/scs/web/blog/dao/ArticleDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blog/WEB-INF/classes/com/scs/web/blog/dao/ArticleDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blog/WEB-INF/classes/com/scs/web/blog/dao/impl/ArticleDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blog/WEB-INF/classes/com/scs/web/blog/dao/impl/ArticleDaoImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/blog/WEB-INF/classes/com/scs/web/blog/dao/impl/UserDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blog/WEB-INF/classes/com/scs/web/blog/dao/impl/UserDaoImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/blog/WEB-INF/classes/com/scs/web/blog/domain/dto/UserDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blog/WEB-INF/classes/com/scs/web/blog/domain/dto/UserDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blog/WEB-INF/classes/com/scs/web/blog/entity/Article.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blog/WEB-INF/classes/com/scs/web/blog/entity/Article.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/blog/WEB-INF/classes/com/scs/web/blog/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blog/WEB-INF/classes/com/scs/web/blog/entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blog/WEB-INF/classes/com/scs/web/blog/service/ArticleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blog/WEB-INF/classes/com/scs/web/blog/service/ArticleService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blog/WEB-INF/classes/com/scs/web/blog/service/impl/ArticleServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blog/WEB-INF/classes/com/scs/web/blog/service/impl/ArticleServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/blog/WEB-INF/classes/com/scs/web/blog/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blog/WEB-INF/classes/com/scs/web/blog/service/impl/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blog/WEB-INF/classes/com/scs/web/blog/util/BeanHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blog/WEB-INF/classes/com/scs/web/blog/util/BeanHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/blog/WEB-INF/classes/com/scs/web/blog/util/SpiderUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/blog/WEB-INF/classes/com/scs/web/blog/util/SpiderUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/scs/web/blog/controller/ArticleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/scs/web/blog/controller/ArticleController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/scs/web/blog/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/scs/web/blog/controller/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/scs/web/blog/dao/ArticleDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/scs/web/blog/dao/ArticleDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/scs/web/blog/dao/impl/ArticleDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/scs/web/blog/dao/impl/ArticleDaoImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/scs/web/blog/dao/impl/UserDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/scs/web/blog/dao/impl/UserDaoImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/scs/web/blog/domain/dto/UserDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/scs/web/blog/domain/dto/UserDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/scs/web/blog/entity/Article.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/scs/web/blog/entity/Article.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/scs/web/blog/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/scs/web/blog/entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/scs/web/blog/service/ArticleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/scs/web/blog/service/ArticleService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/scs/web/blog/service/impl/ArticleServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/scs/web/blog/service/impl/ArticleServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/scs/web/blog/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/scs/web/blog/service/impl/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/scs/web/blog/util/BeanHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/scs/web/blog/util/BeanHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/scs/web/blog/util/SpiderUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/scs/web/blog/util/SpiderUtil.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -109,7 +147,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/scs/web/blog/util" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/scs/web/blog/controller" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -129,11 +167,11 @@
       <recent name="com.scs.web.blog.dao.UserDao" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\javaweb\blogshixun\src\main\java\com\scs\web\blog\util" />
+      <recent name="F:\javaweb\blogshixun\src\main\java\com\scs\web\blog\controller" />
       <recent name="F:\javaweb\blogshixun\src\main\java\com\scs\web\blog\domain\dto" />
+      <recent name="F:\javaweb\blogshixun\src\main\java\com\scs\web\blog\util" />
       <recent name="F:\javaweb\blogshixun\src\main\java\com\scs\web\blog\filter" />
       <recent name="F:\javaweb\blogshixun\src\main\java\com\scs\web\blog\domain" />
-      <recent name="F:\javaweb\blogshixun\src\main\resources" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -296,8 +334,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UserDaoTest.batchInsert (1)" />
         <item itemvalue="JUnit.ArticleDaoTest.batchInsert" />
+        <item itemvalue="JUnit.UserDaoTest.batchInsert (1)" />
         <item itemvalue="JUnit.TopicDaoTest.batchInsert" />
         <item itemvalue="Application.ResultCode" />
         <item itemvalue="JavaScript Debug.Code.jsp" />
@@ -365,7 +403,17 @@
       <workItem from="1576407455336" duration="4273000" />
       <workItem from="1576454389401" duration="19782000" />
       <workItem from="1576497430516" duration="2409000" />
-      <workItem from="1576540847861" duration="7714000" />
+      <workItem from="1576540847861" duration="9482000" />
+      <workItem from="1576560159244" duration="5835000" />
+      <workItem from="1576585413063" duration="1097000" />
+      <workItem from="1576627517304" duration="9972000" />
+      <workItem from="1576646299706" duration="1275000" />
+      <workItem from="1576654326259" duration="2075000" />
+      <workItem from="1576714108347" duration="8514000" />
+      <workItem from="1576734845421" duration="593000" />
+      <workItem from="1576821434245" duration="245000" />
+      <workItem from="1576824346588" duration="3084000" />
+      <workItem from="1576899792244" duration="746000" />
     </task>
     <task id="LOCAL-00001" summary="第二次提交，登录接口基本完成">
       <created>1575373181111</created>
@@ -451,7 +499,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576477385595</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="第16此提交，将注册功能完善，去掉不必要的性别，经过一步步测试，发现，注册的新用户登录不上去，是因为没有bir,cretime,手动添加可以登录，所以加了获取bir,和creatime的方法语句。测试之后发现，头像锁定。所有的东西都行，除了bir ,需要前端加特定组件，后端才能直接获取。">
+      <created>1576548841593</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1576548841593</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -483,6 +538,7 @@
     <MESSAGE value="第11次提交，新增留言板功能，还会尝试增加评论以及回复评论功能" />
     <MESSAGE value="第13次提交，完善留言板" />
     <MESSAGE value="第15此提交，将注册用户改写，可以输入昵称和性别，" />
-    <option name="LAST_COMMIT_MESSAGE" value="第15此提交，将注册用户改写，可以输入昵称和性别，" />
+    <MESSAGE value="第16此提交，将注册功能完善，去掉不必要的性别，经过一步步测试，发现，注册的新用户登录不上去，是因为没有bir,cretime,手动添加可以登录，所以加了获取bir,和creatime的方法语句。测试之后发现，头像锁定。所有的东西都行，除了bir ,需要前端加特定组件，后端才能直接获取。" />
+    <option name="LAST_COMMIT_MESSAGE" value="第16此提交，将注册功能完善，去掉不必要的性别，经过一步步测试，发现，注册的新用户登录不上去，是因为没有bir,cretime,手动添加可以登录，所以加了获取bir,和creatime的方法语句。测试之后发现，头像锁定。所有的东西都行，除了bir ,需要前端加特定组件，后端才能直接获取。" />
   </component>
 </project>

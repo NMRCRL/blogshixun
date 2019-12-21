@@ -1,9 +1,6 @@
 package com.scs.web.blog.service.impl;
-
-import com.scs.web.blog.dao.ArticleDao;
 import com.scs.web.blog.dao.CommentDao;
-import com.scs.web.blog.dao.UserDao;
-import com.scs.web.blog.entity.Comment;
+import com.scs.web.blog.domain.dto.CommentDto;
 import com.scs.web.blog.factory.DaoFactory;
 import com.scs.web.blog.service.CommentService;
 import com.scs.web.blog.util.Result;
@@ -12,9 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.SQLException;
-import java.time.LocalDateTime;
 import java.util.List;
-
 /**
  * @author liu tianyuan
  * @ClassName
@@ -22,40 +17,39 @@ import java.util.List;
  * @Date 2019/12/13
  * @Version 1.0
  **/
+
 public class CommentServiceImpl implements CommentService {
-    private ArticleDao articleDao = DaoFactory.getArticleDaoInstance();
-    private UserDao userDao = DaoFactory.getUserDaoInstance();
     private CommentDao commentDao = DaoFactory.getCommentDaoInstance();
-    private Logger logger = LoggerFactory.getLogger(CommentService.class);
-
-    @Override
-    public Result addArtComments(Comment comment) {
-        int n = 0;
-        try {
-            comment.setCreateTime(LocalDateTime.now());
-            n = commentDao.insert(comment);
-
-            System.out.println(n);
-        } catch (SQLException e) {
-            logger.error("评论内容添加失败");
-        }
-        if (n != 0) {
-            return Result.success(n);
-        }
-        return Result.failure(ResultCode.RESULT_CODE_DATA_NONE);
-    }
+    private static Logger logger = LoggerFactory.getLogger(ArticleServiceImpl.class);
 
 
     @Override
-    public List<Comment> listComment() {
-        List<Comment> comments = null;
+    public Result getComments(long article_id) {
+        List<CommentDto> list = null;
         try {
-            comments = commentDao.selectAll();
+            list = commentDao.selectAll(article_id);
         } catch (SQLException e) {
-            System.err.println("查询所有用户异常");
+            logger.error("查询所有评论");
         }
-        return comments;
+        if (list != null) {
+            return Result.success(list);
+        } else {
+            return Result.failure(ResultCode.RESULT_CODE_DATA_NONE);
+        }
     }
 
-
+    @Override
+    public Result addComment(long user_id, long article_id, String content) {
+        Boolean suucess = new Boolean("false") ;
+        try {
+            suucess = commentDao.addComment(article_id , user_id,content);
+        } catch (SQLException e) {
+            logger.error("添加评论");
+        }
+        if (suucess) {
+            return Result.success(suucess);
+        } else {
+            return Result.failure(ResultCode.RESULT_CODE_DATA_NONE);
+        }
+    }
 }

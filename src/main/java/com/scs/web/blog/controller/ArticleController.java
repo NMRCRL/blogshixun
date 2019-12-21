@@ -2,8 +2,10 @@ package com.scs.web.blog.controller;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.scs.web.blog.domain.dto.ArticleDto;
 import com.scs.web.blog.factory.ServiceFactory;
 import com.scs.web.blog.service.ArticleService;
+import com.scs.web.blog.util.ResponseObject;
 import com.scs.web.blog.util.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,8 +15,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Map;
 
 /**
  * @author liu tianyuan
@@ -83,7 +87,36 @@ public class ArticleController extends HttpServlet {
         out.close();
     }
 
+
+    private void insertArticle(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        BufferedReader reader = req.getReader();
+        StringBuilder stringBuilder = new StringBuilder();
+        String line = null;
+        while ((line = reader.readLine()) != null) {
+            stringBuilder.append(line);
+        }
+        System.out.println(stringBuilder.toString());
+        Gson gson = new GsonBuilder().create();
+        Map<String, Object> map = null;
+        ArticleDto articleDto = gson.fromJson(stringBuilder.toString(), ArticleDto.class);
+        String requestPath = req.getRequestURI().trim();
+        PrintWriter out = resp.getWriter();
+        Result result = articleService.insertArticle(articleDto);
+        resp.setContentType("application/json;charset=utf-8");
+        int code = resp.getStatus();
+        String msg = code == 200 ? "成功" : "失败";
+        ResponseObject ro = ResponseObject.success(code, msg, articleDto);
+        PrintWriter out1 = resp.getWriter();
+        out.print(gson.toJson(ro));
+        out.close();
+    }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    String uri=req.getRequestURI().trim();
+    if ("/api/article/insert".equals(uri)){
+        insertArticle(req,resp);
+    }
+
     }
 }

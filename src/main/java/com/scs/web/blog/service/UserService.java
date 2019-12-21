@@ -1,6 +1,7 @@
 package com.scs.web.blog.service;
 
 import com.scs.web.blog.domain.dto.UserDto;
+import com.scs.web.blog.domain.dto.UserUpdateDto;
 import com.scs.web.blog.util.Result;
 
 /**
@@ -62,4 +63,11 @@ public interface UserService {
      * @return Result
      */
     Result signUp(UserDto userDto);
+
+    /**
+     * 用户更新
+
+     * @return
+     */
+    Result updateInfo(UserUpdateDto userUpdateDto);
 }

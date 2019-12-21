@@ -1,74 +1,54 @@
 package com.scs.web.blog.dao.impl;
-
 import com.scs.web.blog.dao.CommentDao;
-import com.scs.web.blog.entity.Comment;
+import com.scs.web.blog.domain.dto.CommentDto;
 import com.scs.web.blog.util.BeanHandler;
 import com.scs.web.blog.util.DbUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.*;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
-
 /**
  * @author liu tianyuan
  * @ClassName
  * @Description
- * @Date 2019/12/13
+ * @Date 2019/12/20
  * @Version 1.0
  **/
 
 public class CommentDaoImpl implements CommentDao {
-    private static Logger logger = LoggerFactory.getLogger(CommentDaoImpl.class);
-
+    private static Logger logger = LoggerFactory.getLogger(FollowDaoImpl.class);
     @Override
-    public int insert(Comment user) throws SQLException {
+    public List<CommentDto> selectAll(long article_id) throws SQLException {
         Connection connection = DbUtil.getConnection();
-        String sql = "INSERT INTO t_comment (nickname,content,create_time) VALUES (?,?,?) ";
+        String sql = "select t_comment.id , t_comment.content , t_user.nickname from t_comment , t_user where article_id= ? and t_user.id = t_comment.user_id";
         PreparedStatement pst = connection.prepareStatement(sql);
-        System.out.println(user);
-        pst.setString(1, user.getNickname());
-        pst.setString(2, user.getContent());
-        pst.setObject(3, LocalDateTime.now());
-        int n = pst.executeUpdate();
-        DbUtil.close(connection, pst);
-        return n;
-    }
-
-
-    @Override
-    public List<Comment> selectHotComments() throws SQLException {
-        Connection connection = DbUtil.getConnection();
-        String sql = "SELECT * FROM t_comment ORDER BY follows DESC LIMIT 8 ";
-        PreparedStatement pst = connection.prepareStatement(sql);
+        pst.setLong(1,article_id);
         ResultSet rs = pst.executeQuery();
-        List<Comment> commentList = BeanHandler.convertComment(rs);
+        List<CommentDto>  list = BeanHandler.converComment(rs);
         DbUtil.close(connection, pst, rs);
-        return commentList;
+        return list;
     }
 
     @Override
-    public List<Comment> selectAll() throws SQLException {
-        List<Comment> commentList = new ArrayList<>();
+    public boolean addComment(long artcle_id, long user_id, String content) throws SQLException {
         Connection connection = DbUtil.getConnection();
-        String sql = "SELECT * FROM t_comment ORDER BY id DESC ";
-        PreparedStatement pstmt = connection.prepareStatement(sql);
-        ResultSet rs = pstmt.executeQuery();
-        while (rs.next()) {
-            Comment comment = new Comment();
-            comment.setId(rs.getLong("id"));
-            comment.setNickname(rs.getString("nickname"));
-            comment.setContent(rs.getString("content"));
-            Timestamp timestamp = rs.getTimestamp("create_time");
-            comment.setCreateTime(timestamp.toLocalDateTime());
-            commentList.add(comment);
+        boolean success = false ;
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        String sql = "insert into t_comment (user_id , article_id , content , create_time) values (? ,? , ? ,?)";
+        PreparedStatement pst = connection.prepareStatement(sql);
+        pst.setLong(1,user_id);
+        pst.setLong(2, artcle_id);
+        pst.setString(3,content);
+        pst.setTimestamp(4,timestamp);
+        System.out.println(content);
+        int rs = pst.executeUpdate() ;
+        if (rs > 0 ){
+            success = true ;
         }
-        return commentList;
+        DbUtil.close(connection, pst);
+        return success;
     }
+
+
 }
-
-
-
-

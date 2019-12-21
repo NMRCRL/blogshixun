@@ -1,9 +1,7 @@
 package com.scs.web.blog.service;
 
-import com.scs.web.blog.entity.Comment;
-import com.scs.web.blog.util.Result;
 
-import java.util.List;
+import com.scs.web.blog.util.Result;
 /**
  * @author liu tianyuan
  * @ClassName
@@ -14,18 +12,18 @@ import java.util.List;
 public interface CommentService {
 
     /**
-     * 新增评论
-     * @param
+     *
+     * @param article_id
      * @return
      */
-    Result addArtComments(Comment comment);
+    Result getComments(long article_id);
 
-
-    List<Comment> listComment();
     /**
-     * 根据文章id查询所有评论信息
-     * @param
+     *
+     * @param user_id
+     * @param article_id
+     * @param content
      * @return
      */
-
+    Result addComment(long user_id, long article_id, String content);
 }

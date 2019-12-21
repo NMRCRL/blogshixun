@@ -1,5 +1,6 @@
 package com.scs.web.blog.service;
 
+import com.scs.web.blog.domain.dto.ArticleDto;
 import com.scs.web.blog.util.Result;
 
 /**
@@ -42,4 +43,8 @@ public interface ArticleService {
      * @return
      */
     Result selectByKeywords(String keywords);
+
+
+    Result insertArticle(ArticleDto articleDto);
+
 }

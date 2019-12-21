@@ -1,7 +1,9 @@
 package com.scs.web.blog.util;
-import com.scs.web.blog.entity.Comment;
+
+import com.scs.web.blog.domain.dto.CommentDto;
 import com.scs.web.blog.domain.vo.ArticleVo;
 import com.scs.web.blog.entity.Article;
+import com.scs.web.blog.entity.Comment;
 import com.scs.web.blog.entity.Topic;
 import com.scs.web.blog.entity.User;
 import org.slf4j.Logger;
@@ -20,6 +22,22 @@ import java.util.List;
  **/
 public class BeanHandler {
     private static Logger logger = LoggerFactory.getLogger(BeanHandler.class);
+    public static List<CommentDto> converComment(ResultSet rs){
+        List<CommentDto> list = new ArrayList<>();
+        try{
+            while(rs.next()){
+                CommentDto comment = new CommentDto();
+                comment.setId(rs.getLong("t_comment.id"));
+                comment.setComment(rs.getString("t_comment.content"));
+                comment.setName(rs.getString("t_user.nickname"));
+                list.add(comment);
+            }
+        }catch (SQLException e){
+            logger.error("评论数据结果集解析产生异常");
+        }
+        return list;
+
+    }
 
     public static List<User> convertUser(ResultSet rs) {
         List<User> userList = new ArrayList<>();

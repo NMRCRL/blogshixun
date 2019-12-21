@@ -3,16 +3,14 @@ package com.scs.web.blog.controller;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.scs.web.blog.domain.dto.UserDto;
+import com.scs.web.blog.domain.dto.UserUpdateDto;
 import com.scs.web.blog.factory.ServiceFactory;
 import com.scs.web.blog.listener.MySessionContext;
 import com.scs.web.blog.service.UserService;
-import com.scs.web.blog.util.HttpUtil;
-import com.scs.web.blog.util.Result;
-import com.scs.web.blog.util.ResultCode;
-import com.scs.web.blog.util.UrlPatten;
+import com.scs.web.blog.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.scs.web.blog.util.ResponseObject;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -73,6 +71,9 @@ public class UserController extends HttpServlet {
             case UrlPatten.USER_CHECK_MOBILE:
                 String mobile = req.getParameter("mobile");
                 HttpUtil.getResponseBody(resp, userService.checkMobile(mobile));
+                break;
+            case UrlPatten.USER_UPDATE:
+                updateInfo(req, resp);
                 break;
             default:
         }
@@ -161,4 +162,13 @@ public class UserController extends HttpServlet {
         out.print(gson.toJson(result));
         out.close();
     }
+    private void updateInfo(HttpServletRequest req, HttpServletResponse resp) {
+        String requestBody = HttpUtil.getRequestBody(req);
+        logger.info("修改用户信息：" + requestBody);
+        Gson gson = new GsonBuilder().create();
+
+        UserUpdateDto userUpdateDto = gson.fromJson(requestBody, UserUpdateDto.class);
+        HttpUtil.getResponseBody(resp,userService.updateInfo(userUpdateDto));
+    }
+
 }

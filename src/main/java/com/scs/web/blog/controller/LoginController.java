@@ -34,7 +34,7 @@ public class LoginController extends HttpServlet {
         if(code.equalsIgnoreCase(correctCode)){
             resp.getWriter().write("登录成功");
         }else {
-            resp.getWriter().write("验证码错误");
+            resp.getWriter().write("gj错误");
         }
     }
 }

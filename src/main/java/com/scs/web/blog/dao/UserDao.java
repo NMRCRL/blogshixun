@@ -2,7 +2,7 @@ package com.scs.web.blog.dao;
 
 import com.scs.web.blog.domain.vo.UserVo;
 import com.scs.web.blog.entity.User;
-
+import java.time.LocalDate;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -50,6 +50,7 @@ public interface UserDao {
 
     /**
      * 查询分页用户
+     *
      * @param currentPage
      * @param count
      * @return
@@ -59,7 +60,8 @@ public interface UserDao {
 
     /**
      * 根据id查询用户
-     * @param  id
+     *
+     * @param id
      * @return
      * @throws SQLException
      */
@@ -68,10 +70,15 @@ public interface UserDao {
 
     /**
      * 模糊搜索用户
+     *
      * @param keywords
      * @return
      * @throws SQLException
      */
     List<User> selectByKeywords(String keywords) throws SQLException;
 
+
+
+
+    boolean updateInfo(int userId, String avatar, String nickname, String mobile, String md5Hex, String gender,  LocalDate birthday, String introduction);
 }

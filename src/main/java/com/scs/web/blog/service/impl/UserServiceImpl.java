@@ -3,6 +3,7 @@ package com.scs.web.blog.service.impl;
 import com.scs.web.blog.dao.ArticleDao;
 import com.scs.web.blog.dao.UserDao;
 import com.scs.web.blog.domain.dto.UserDto;
+import com.scs.web.blog.domain.dto.UserUpdateDto;
 import com.scs.web.blog.domain.vo.ArticleVo;
 import com.scs.web.blog.domain.vo.UserVo;
 import com.scs.web.blog.entity.User;
@@ -15,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -139,7 +141,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Result signUp(UserDto userDto) {
-        User user = new User(userDto.getMobile(), DigestUtils.md5Hex(userDto.getPassword()),userDto.getNickname(),userDto.getAvatar(),userDto.getBirthDay(), LocalDateTime.now());
+        User user = new User(userDto.getMobile(), DigestUtils.md5Hex(userDto.getPassword()), userDto.getNickname(), userDto.getAvatar(), LocalDate.now(), LocalDateTime.now());
         try {
             userDao.insert(user);
             return Result.success();
@@ -147,5 +149,21 @@ public class UserServiceImpl implements UserService {
             logger.error("新增用户出现异常");
             return Result.failure(ResultCode.USER_SIGN_UP_FAIL);
         }
+    }
+
+
+
+    @Override
+    public Result updateInfo(UserUpdateDto userUpdateDto) {
+        userDao.updateInfo(userUpdateDto.getUserId(),
+                userUpdateDto.getAvatar(),
+                userUpdateDto.getNickname(),
+                userUpdateDto.getMobile(),
+                DigestUtils.md5Hex(userUpdateDto.getPassword()),
+                userUpdateDto.getGender(),
+                userUpdateDto.getBirthday(),
+                userUpdateDto.getIntroduction()
+        );
+        return Result.success();
     }
 }

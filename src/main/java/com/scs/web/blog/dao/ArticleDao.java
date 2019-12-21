@@ -78,4 +78,13 @@ public interface ArticleDao {
      * @throws SQLException
      */
     ArticleVo getArticle(long id) throws SQLException;
+    /**
+     *
+     * @param article
+     * @return
+     * @throws SQLException
+     */
+    int insert(Article article) throws  SQLException;
+
+
 }
