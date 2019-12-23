@@ -52,4 +52,19 @@ public class CommentServiceImpl implements CommentService {
             return Result.failure(ResultCode.RESULT_CODE_DATA_NONE);
         }
     }
+
+    @Override
+    public Result deleteComment(long user_id, long article_id , int index  ) {
+        Boolean suucess = new Boolean("false") ;
+        try {
+            suucess = commentDao.deleteComment(user_id ,article_id  , index);
+        } catch (SQLException e) {
+            logger.error("删除评论");
+        }
+        if (suucess) {
+            return Result.success(suucess);
+        } else {
+            return Result.failure(ResultCode.RESULT_CODE_DATA_NONE);
+        }
+    }
 }

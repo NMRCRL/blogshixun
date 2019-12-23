@@ -31,16 +31,21 @@ public class CommentController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //获得请求地质
+        //获得请求地址
         String uri = req.getRequestURI().trim();
-        if ("/api/comment".equals(uri)) {
+        if("/api/comment".equals(uri)){
             String article_id = req.getParameter("article");
-            getAllComments(resp, Long.parseLong(article_id));
-        } else {
-            String article_id = req.getParameter("article");
-            String user_id = req.getParameter("user");
+            getAllComments(resp , Long.parseLong(article_id));
+        }else if ("/api/add/comment".equals(uri)){
+            String article_id = req.getParameter("article") ;
+            String user_id = req.getParameter("user") ;
             String content = req.getParameter("content");
-            addComment(resp, Long.parseLong(article_id), Long.parseLong(user_id), content);
+            addComment(resp , Long.parseLong(article_id) , Long.parseLong(user_id) , content ) ;
+        }else if ("/api/delete/comment".equals(uri)){
+            String article_id = req.getParameter("article") ;
+            String user_id = req.getParameter("user") ;
+            String index = req.getParameter("id");
+            deleteComment(resp, Long.parseLong(article_id) , Long.parseLong(user_id)  ,Integer.parseInt(index) ) ;
         }
     }
 
@@ -51,6 +56,14 @@ public class CommentController extends HttpServlet {
         out.print(gson.toJson(result));
         out.close();
     }
+    private void deleteComment(HttpServletResponse resp, long parseLong, long parseLong1 , Integer index) throws IOException {
+        Gson gson = new GsonBuilder().create();
+        Result result = commentService.deleteComment(parseLong1 , parseLong ,index);
+        PrintWriter out = resp.getWriter();
+        out.print(gson.toJson(result));
+        out.close();
+    }
+
 
     private void getAllComments(HttpServletResponse resp, long parseLong) throws IOException {
         Gson gson = new GsonBuilder().create();

@@ -13,7 +13,7 @@ public interface CommentService {
 
     /**
      *
-     * @param article_id
+     * @param
      * @return
      */
     Result getComments(long article_id);
@@ -26,4 +26,7 @@ public interface CommentService {
      * @return
      */
     Result addComment(long user_id, long article_id, String content);
+
+
+    Result deleteComment(long user_id , long article_id ,int index);
 }

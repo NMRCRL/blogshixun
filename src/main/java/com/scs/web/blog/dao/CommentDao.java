@@ -16,7 +16,7 @@ public interface CommentDao {
 
     /**
      * 查询所有的评论
-     * @param article_id
+     * @param
      * @return
      */
     List<CommentDto> selectAll(long article_id) throws SQLException;
@@ -31,4 +31,5 @@ public interface CommentDao {
      */
     boolean addComment(long artcle_id, long user_id, String content) throws SQLException;
 
+    boolean deleteComment(long user_id , long artcle_id , int index) throws SQLException;
 }
